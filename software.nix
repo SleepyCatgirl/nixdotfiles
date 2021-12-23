@@ -40,7 +40,6 @@
             qutebrowser python39Packages.adblock
             # Books
             kepubify calibre
-
           ];
 
    programs.steam.enable = true;
