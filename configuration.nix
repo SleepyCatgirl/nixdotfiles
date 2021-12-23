@@ -7,16 +7,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./fonts.nix
+      ./nix.nix
+      ./audio.nix
+      ./input.nix
+      ./software.nix
     ];
-  nixpkgs.config = {
-	allowUnfree = true;
-  };
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      '';
-  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -52,28 +49,6 @@
   # fonts
   #
   i18n.defaultLocale = "en_US.UTF-8";
-  fonts.fonts = with pkgs; [
-    ipafont
-    kochi-substitute
-    source-code-pro
-    carlito
-    dejavu_fonts
-  ];
-  fonts.fontconfig.defaultFonts = {
-    monospace = [
-      "DejaVu Sans Mono"
-      "IPAGothic"
-    ];
-    sansSerif = [
-      "DejaVu Sans"
-      "IPAPGothic"
-    ];
-    serif = [
-      "DejaVu Serif"
-      "IPAPMincho"
-    ];
-  };
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -101,20 +76,6 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  # sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
-  # If you want to use JACK applications, uncomment this
-  jack.enable = true;
-  socketActivation = true;
-};
-
   # Enable touchpad support (enabled default in most desktopManager).
 #  services.xserver.libinput = {
 #	enable = true;
@@ -133,49 +94,7 @@ services.pipewire = {
      home = "/home/senchou";
    };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
 
-   environment.systemPackages = with pkgs;
-        let
-          R-with-pkgs = rWrapper.override{packages = with rPackages; [ggplot2 tidyverse];};
-        in
-          [
-            vim emacs ripgrep coreutils fd clang sqlite # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-            wget git unzip # Basic tools
-            vulkan-tools google-chrome discord pulsemixer # web browser, chat, audio mixer
-            clojure clojure-lsp leiningen # Clojure dev
-            gcc gdb # C++ Dev
-            cabal-install haskell-language-server ghc # Haskell dev
-            dmenu pywal polybarFull bspwm sxhkd # WM aesthics
-            gnome.gnome-tweaks # Gnome aesthics
-            openvpn # Uni.
-            mullvad-vpn # VPN
-            openjdk # Java run
-            wireguard # VPN
-            qbittorrent # Torrenting
-            R-with-pkgs
-            scrot xclip # screenshoting and putting them in copy paste
-            nethack cool-retro-term # gaming
-            angband crawl           # gameeeess
-            steam-run-native        # FHS enviroment
-            wineWowPackages.staging # WINE
-            winetricks
-            texlive.combined.scheme-full
-            mpv play-with-mpv yt-dlp # Download youtube and play em
-            git-crypt # sensitive information like GPG keys via .git
-            piper # logitech libratbagd GTK frontend
-            # For configuring them
-            virglrenderer # 3D Render for VMs
-            cling ccls # C++ Dev
-            anki # learning
-            qutebrowser python39Packages.adblock
-            # Books
-            kepubify calibre
-
-          ];
-
-   programs.steam.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -230,15 +149,4 @@ boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
 
 
-  # Japanese input
-  # fcitx as IME
-  i18n.inputMethod = {
-    enabled = "fcitx";
-    # mozc
-    fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
-
-    # For wayland and such
-    # enabled = "ibus";
-    # ibus.engines = with pkgs.ibus-engnies; [ mozc ];
-  };
 }
