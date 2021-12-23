@@ -12,41 +12,21 @@
       ./audio.nix
       ./input.nix
       ./software.nix
+      ./networking.nix
+      ./desktop.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "nix"; # Define your hostname.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
-  services.mullvad-vpn.enable = true;
-  programs.gamemode.enable = true;
-  networking.firewall.checkReversePath = "loose";
-  networking.wireguard.enable = true;
-  networking.iproute2.enable = true;
-  nix.autoOptimiseStore = true; # Optimize for space
-  networking.networkmanager.enable = true;	
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   # };
-  #
-  # fonts
   #
   i18n.defaultLocale = "en_US.UTF-8";
   # Enable the X11 windowing system.
@@ -55,15 +35,6 @@
  #suspend
 #  services.logind.lidSwitch = "suspend";
 #  services.logind.lidSwitchDocked = "suspend";
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = false;
-  services.xserver.displayManager.startx.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = [ pkgs.gnome.cheese pkgs.gnome.gnome-music pkgs.evince pkgs.gnome.gnome-characters pkgs.gnome.totem
-                                      ];
- services.xserver.windowManager.bspwm.enable = true;
-
   zramSwap = {
     enable = true;
     memoryPercent = 110;
