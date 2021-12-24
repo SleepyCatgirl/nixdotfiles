@@ -7,7 +7,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./fonts.nix
+#      ./fonts.nix
       ./nix.nix
       ./audio.nix
       ./input.nix
@@ -31,6 +31,29 @@
   i18n.defaultLocale = "en_US.UTF-8";
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+{
+    fonts.fonts = with pkgs; [
+    ipafont
+    kochi-substitute
+    source-code-pro
+    carlito
+    dejavu_fonts
+  ];
+  fonts.fontconfig.defaultFonts = {
+    monospace = [
+      "DejaVu Sans Mono"
+      "IPAGothic"
+    ];
+    sansSerif = [
+      "DejaVu Sans"
+      "IPAPGothic"
+    ];
+    serif = [
+      "DejaVu Serif"
+      "IPAPMincho"
+    ];
+  };
+
 
  #suspend
 #  services.logind.lidSwitch = "suspend";
