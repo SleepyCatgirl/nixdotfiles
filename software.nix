@@ -4,16 +4,16 @@
     # List packages installed in system profile. To search, run:
   # $ nix search wget
   nixpkgs.overlays = [
-    import (builtins.fetchTarball {
+    (import (builtins.fetchTarball {
       url = "https://github.com/nix-community/emacs-overlay/archive/f3c435a5e5cfa3ce1b2f50ba37b9cacfec4139d9.tar.gz";
-      environment.systemPackages = with pkgs;
-    }))
-];
+      sha256 = "1k91djyfmwyb3hs0i60cvchyzvb3d5g2jhyb3mrnzs0rjr7siprj";
+    }))];
+   environment.systemPackages = with pkgs;
         let
           R-with-pkgs = rWrapper.override{packages = with rPackages; [ggplot2 tidyverse];};
         in
           [
-            vim emacsPgtkGcc ripgrep coreutils fd clang sqlite # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+            vim emacsPgtk ripgrep coreutils fd clang sqlite # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
             wget git unzip # Basic tools
             vulkan-tools google-chrome discord pulsemixer # web browser, chat, audio mixer
             clojure clojure-lsp leiningen # Clojure dev
@@ -45,7 +45,7 @@
             # Books
             kepubify calibre
             xorg.xhost
+            sbcl
           ];
-
    programs.steam.enable = true;
 }
