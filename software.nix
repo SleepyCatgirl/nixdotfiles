@@ -26,14 +26,14 @@
             openjdk # Java run
             wireguard # VPN
             qbittorrent # Torrenting
-            R-with-pkgs
+            R-with-pkgs # R/statistics
             scrot xclip # screenshoting and putting them in copy paste
             nethack cool-retro-term # gaming
             angband crawl           # gameeeess
             steam-run-native        # FHS enviroment
             wineWowPackages.staging # WINE
-            winetricks
-            texlive.combined.scheme-full
+            winetricks              # WINE
+            texlive.combined.scheme-full # LaTeX stuff, pdfs etc
             mpv play-with-mpv yt-dlp # Download youtube and play em
             git-crypt # sensitive information like GPG keys via .git
             piper # logitech libratbagd GTK frontend
@@ -42,10 +42,9 @@
             cling ccls # C++ Dev
             anki # learning
             qutebrowser python39Packages.adblock
-            # Books
-            kepubify calibre
+            kepubify calibre # Books
             xorg.xhost
-            sbcl
+            sbcl # Common Lisp compiler
           ];
    programs.steam.enable = true;
 }
