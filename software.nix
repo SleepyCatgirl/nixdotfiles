@@ -46,7 +46,7 @@
             kepubify calibre # Books
             xorg.xhost
             sbcl # Common Lisp compiler
-            libvterm cmake # Terminal emulator library for vterm
+            libvterm cmake gnumake # Terminal emulator library for vterm
           ];
    programs.steam.enable = true; # steam
 }
