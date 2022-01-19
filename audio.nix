@@ -14,6 +14,9 @@ services.pipewire = {
   jack.enable = true;
   socketActivation = true;
 };
+services.jack = {
+  jackd.enable = true;
+}
 
 
 }

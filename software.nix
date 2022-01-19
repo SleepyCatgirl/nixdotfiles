@@ -47,6 +47,7 @@
             xorg.xhost
             sbcl # Common Lisp compiler
             libvterm cmake gnumake libtool # Terminal emulator library for vterm
+            obs # Streaming/Discord
           ];
    programs.steam.enable = true; # steam
 }
