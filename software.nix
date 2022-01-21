@@ -49,6 +49,7 @@
             libvterm cmake gnumake libtool # Terminal emulator library for vterm
             obs-studio # Streaming/Discord
             qjackctl # JACK software
+            zathura # PDF reading
           ];
    programs.steam.enable = true; # steam
 }
