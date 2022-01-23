@@ -50,6 +50,7 @@
             obs-studio # Streaming/Discord
             qjackctl # JACK software
             zathura # PDF reading
+            fluidsynth # midi for elona+
           ];
    programs.steam.enable = true; # steam
 }
