@@ -140,6 +140,9 @@ boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 	enable = true;
 	driSupport32Bit = true;
 	driSupport = true;
+  extraPackages = with pkgs; [
+    libva1
+  ];
   };
 
 
