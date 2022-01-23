@@ -14,6 +14,7 @@
       ./software.nix
       ./networking.nix
       ./desktop.nix
+      ./xdg.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
