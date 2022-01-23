@@ -3,9 +3,9 @@
 {
   xdg = {
     portal.enable = true;
-    xdg.portal.wlr.enable = true;
-    xdg.portal.gtkUsePortal = true;
-    xdg.portal.extraPortals = with pkgs; [
+    portal.wlr.enable = true;
+    portal.gtkUsePortal = true;
+    portal.extraPortals = with pkgs; [
       xdg-desktop-portal-gtk ];
   };
 }
