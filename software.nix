@@ -15,7 +15,7 @@
           [
             vim emacsPgtk ripgrep coreutils fd sqlite 
             wget git unzip # Basic tools
-            vulkan-tools google-chrome discord discordcanary pulsemixer # web browser, chat, audio mixer
+            vulkan-tools google-chrome discord discord-canary pulsemixer # web browser, chat, audio mixer
             clojure clojure-lsp leiningen # Clojure dev
             cabal-install haskell-language-server ghc # Haskell dev
             dmenu pywal polybarFull bspwm sxhkd # WM aesthics
