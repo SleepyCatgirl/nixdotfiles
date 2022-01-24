@@ -19,6 +19,7 @@
             clojure clojure-lsp leiningen # Clojure dev
             cabal-install haskell-language-server ghc # Haskell dev
             dmenu pywal polybarFull bspwm sxhkd # WM aesthics
+            unrar-wrapper # unrar
             gnome.gnome-tweaks # Gnome aesthics
             openvpn # Uni.
             mullvad-vpn # VPN
