@@ -52,6 +52,7 @@
             qjackctl # JACK software
             zathura # PDF reading
             fluidsynth # midi for elona+
+            mpd ncmpcpp
           ];
    programs.steam.enable = true; # steam
 }
