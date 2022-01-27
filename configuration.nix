@@ -85,7 +85,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.senchou = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "networkmanage" "audio" "video" "libvirtd" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "jackaudio" "wheel" "networkmanage" "audio" "video" "libvirtd" ]; # Enable ‘sudo’ for the user.
      home = "/home/senchou";
    };
 
@@ -131,7 +131,7 @@ boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   system.stateVersion = "21.05"; # Did you read the comment?
   # Hardwar accel etc
   services.xserver.videoDrivers = [ "amdgpu" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ "snd-seq" "snd-rawmidi" "amdgpu" ];
   hardware.firmware = with pkgs; [
 	firmwareLinuxNonfree
 	];

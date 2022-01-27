@@ -53,6 +53,10 @@
             zathura # PDF reading
             fluidsynth # midi for elona+
             mpd ncmpcpp
+            # jack2 pavucontrol libjack2 jack2Full jack_capture
+            # Pixelart
+            aseprite-unfree
+
           ];
    programs.steam.enable = true; # steam
 }
