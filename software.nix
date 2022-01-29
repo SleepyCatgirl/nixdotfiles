@@ -57,6 +57,9 @@
             # Pixelart
             aseprite-unfree
 
+            # SQL Software
+            postgresql
+
           ];
    programs.steam.enable = true; # steam
 }
