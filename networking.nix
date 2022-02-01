@@ -9,7 +9,7 @@
   networking.firewall.checkReversePath = "loose";
   networking.wireguard.enable = true;
   networking.iproute2.enable = true;
-  nix.autoOptimiseStore = true; # Optimize for space
+  nix.settings.auto-optimise-store = true; # Optimize for space
   networking.networkmanager.enable = true;
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
