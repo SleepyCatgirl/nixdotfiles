@@ -57,6 +57,9 @@
             # Pixelart
             aseprite-unfree
 
+            # Uni
+            teams
+
 
           ];
    programs.steam.enable = true; # steam
