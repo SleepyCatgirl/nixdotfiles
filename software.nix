@@ -17,7 +17,7 @@
             wget git unzip # Basic tools
             vulkan-tools google-chrome discord discord-canary pulsemixer # web browser, chat, audio mixer
             clojure leiningen # Clojure dev
-            cabal-install haskell-language-server ghc # Haskell dev
+            cabal-install haskell-language-server ghc stack# Haskell dev
             dmenu pywal polybarFull bspwm sxhkd # WM aesthics
             unrar-wrapper # unrar
             gnome.gnome-tweaks # Gnome aesthics
@@ -59,7 +59,11 @@
 
             # Uni
             teams
-
+	          feh
+            imagemagick
+            ntfs3g
+            OVMFFull
+            lutris
 
           ];
    programs.steam.enable = true; # steam

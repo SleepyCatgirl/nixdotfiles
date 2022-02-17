@@ -130,7 +130,7 @@ boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
   # Hardwar accel etc
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "amdgpu" "intel" ];
   boot.initrd.kernelModules = [ "snd-seq" "snd-rawmidi" "amdgpu" ];
   hardware.firmware = with pkgs; [
 	firmwareLinuxNonfree
