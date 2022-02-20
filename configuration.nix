@@ -113,10 +113,14 @@
   services.ratbagd.enable = true;
   #ZFS
   boot.kernelParams = [ "zfs.zfs_arc_max=326870912" "nohibernate" "mitigations=off" ]; # ZFS hibernating issue
-  boot.kernelModules = [ "kvm-intel" ]; # kvm
+  boot.kernelModules = [ "kvm-intel" "binder_linux" "ashmem_linux" ]; # kvm waydroid
+  boot.extraModprobeConfig = ''
+                           options binder_linux devices=binder,hwbinder,vndbinder
+'';
   boot.initrd.supportedFilesystems = ["zfs"];
   boot.supportedFilesystems = ["zfs"];
-boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  #boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages; # Latest ZFS kernel
+  boot.kernelPackages = pkgs.linuxPackages_xanmod; # Waydroid
   services.udev.extraRules = ''
     ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ENV{ID_FS_TYPE}=="zfs_member", ATTR{../queue/scheduler}="none"
 ''; # zfs already has its own scheduler. without this my(@Artturin) computer froze for a second when i nix build something.
@@ -146,7 +150,8 @@ boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
 
   };
-
+  # Waydroid
+  virtualisation.waydroid.enable = true;
   #Postgresql
   services.postgresql = {
     enable = true;

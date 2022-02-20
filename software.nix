@@ -11,6 +11,11 @@
    environment.systemPackages = with pkgs;
         let
           R-with-pkgs = rWrapper.override{packages = with rPackages; [ggplot2 tidyverse];};
+          waydroidPython = python-packages: with python-packages; [
+            tqdm
+            requests
+          ];
+          wayPython = python3.withPackages waydroidPython;
         in
           [
             vim emacsPgtk ripgrep coreutils fd sqlite 
@@ -56,15 +61,20 @@
             # jack2 pavucontrol libjack2 jack2Full jack_capture
             # Pixelart
             aseprite-unfree
-
             # Uni
             teams
+            # Image manipulation/view
 	          feh
             imagemagick
+            # NTFS user space 
             ntfs3g
+            # UEFI 
             OVMFFull
+            # Gaming
             lutris
-
+            # waydroid
+            waydroid lxc
+            wayPython 
           ];
    programs.steam.enable = true; # steam
 }
