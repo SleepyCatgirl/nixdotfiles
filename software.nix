@@ -74,7 +74,12 @@
             lutris
             # waydroid
             waydroid lxc
-            wayPython 
+            wayPython
+
+            # Wayland
+            hikari river rivercarro wayvnc grim slurp
+            waybar rofi-wayland wl-clipboard
+            nomacs dunst swaybg
           ];
    programs.steam.enable = true; # steam
 }

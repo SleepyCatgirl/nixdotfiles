@@ -8,7 +8,7 @@
   services.xserver.desktopManager.gnome.enable = true;
   environment.gnome.excludePackages = [ pkgs.gnome.cheese pkgs.gnome.gnome-music pkgs.evince pkgs.gnome.gnome-characters pkgs.gnome.totem
                                       ];
- services.xserver.windowManager.bspwm.enable = true;
+  services.xserver.windowManager.bspwm.enable = true;
 
 
 }
