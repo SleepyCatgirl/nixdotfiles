@@ -31,6 +31,19 @@
     { device = "hddPool/hdd";
       fsType = "zfs";
     };
+  fileSystems."/run/media/HDD/Games/Oblivion" =
+    { device = "hddPool/oblivion";
+      fsType = "zfs";
+    };
+  fileSystems."/run/media/HDD/.var" =
+    { device = "hddPool/flatpak";
+      fsType = "zfs";
+    };
+  fileSystems."/run/media/HDD/.WoT" = 
+    { device = "hddPool/WoT";
+      fsType = "zfs";
+    };
+ 
   fileSystems."/home/senchou/.WoT" =
     { device = "ssdPool/WoWs";
       fsType = "zfs";

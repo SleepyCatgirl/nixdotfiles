@@ -16,11 +16,16 @@
             requests
           ];
           wayPython = python3.withPackages waydroidPython;
+          obsPlug = wrapOBS {
+            plugins = with obs-studio-plugins; [
+              wlrobs
+            ];
+          };
         in
           [
             vim emacsPgtk ripgrep coreutils fd sqlite 
             wget git unzip # Basic tools
-            vulkan-tools google-chrome discord discord-canary pulsemixer # web browser, chat, audio mixer
+            vulkan-tools google-chrome  pulsemixer # web browser, chat, audio mixer
             clojure leiningen # Clojure dev
             cabal-install haskell-language-server ghc stack# Haskell dev
             dmenu pywal polybarFull bspwm sxhkd # WM aesthics
@@ -29,7 +34,7 @@
             openvpn # Uni.
             mullvad-vpn # VPN
             openjdk # Java run
-            wireguard # VPN
+            wireguard-tools # VPN
             qbittorrent # Torrenting
             R-with-pkgs # R/statistics
             scrot xclip # screenshoting and putting them in copy paste
@@ -52,8 +57,10 @@
             kepubify calibre # Books
             xorg.xhost
             sbcl # Common Lisp compiler
+            xcolor # Color picker Xorg
             libvterm cmake gnumake libtool # Terminal emulator library for vterm
-            obs-studio # Streaming/Discord
+            #obs-studio # Streaming/Discord
+            obsPlug
             qjackctl # JACK software
             zathura # PDF reading
             fluidsynth # midi for elona+
@@ -74,12 +81,46 @@
             lutris
             # waydroid
             waydroid lxc
-            wayPython
+            wayPython lzip
 
             # Wayland
-            hikari river rivercarro wayvnc grim slurp
+            hikari river rivercarro wayvnc grim slurp weston
             waybar rofi-wayland wl-clipboard
             nomacs dunst swaybg
+
+            # Virt
+            virt-manager
+            virglrenderer
+
+            # Video edit
+            ffmpeg
+
+            # zip
+            p7zip
+
+            # BTRFS
+            btrfs-progs compsize
+            # ssh
+            ssh-askpass-fullscreen
+            # Remote screen <-> Android
+            scrcpy
+
+            openssl
+            # sync
+            syncthing
+
+            # fuse
+            fuse fuse3
+
+            #Codecs
+            mpg123 gst_all_1.gstreamer gst_all_1.gst-plugins-bad
+            gst_all_1.gst-plugins-ugly gst_all_1.gst-plugins-good gst_all_1.gst-plugins-base
+            # Mangohud!
+            mangohud
+            # For appimages
+            appimage-run
+
           ];
    programs.steam.enable = true; # steam
+   programs.adb.enable = true;
 }

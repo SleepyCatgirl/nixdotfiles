@@ -4,6 +4,6 @@
   xdg = {
     portal.enable = true;
     portal.wlr.enable = true;
-    portal.gtkUsePortal = true;
   };
+  services.dbus.enable = true;
 }

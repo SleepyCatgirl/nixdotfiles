@@ -85,7 +85,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.senchou = {
      isNormalUser = true;
-     extraGroups = [ "jackaudio" "wheel" "networkmanage" "audio" "video" "libvirtd" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "jackaudio" "wheel" "networkmanage" "audio" "video" "libvirtd" "docker" "adbusers" ]; # Enable ‘sudo’ for the user.
      home = "/home/senchou";
    };
 
@@ -102,7 +102,9 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+   services.openssh.enable = true;
+   services.openssh.permitRootLogin = "yes";
+   services.sshd.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -112,7 +114,7 @@
   # Logitech mouse
   services.ratbagd.enable = true;
   #ZFS
-  boot.kernelParams = [ "zfs.zfs_arc_max=326870912" "nohibernate" "mitigations=off" ]; # ZFS hibernating issue
+  boot.kernelParams = [ "zfs.zfs_arc_max=826870912" "nohibernate" "mitigations=off" ]; # ZFS hibernating issue
   boot.kernelModules = [ "kvm-intel" "binder_linux" "ashmem_linux" ]; # kvm waydroid
   boot.extraModprobeConfig = ''
                            options binder_linux devices=binder,hwbinder,vndbinder
@@ -135,23 +137,30 @@
   system.stateVersion = "21.05"; # Did you read the comment?
   # Hardwar accel etc
   services.xserver.videoDrivers = [ "amdgpu" "intel" ];
-  boot.initrd.kernelModules = [ "snd-seq" "snd-rawmidi" "amdgpu" ];
+  boot.initrd.kernelModules = [ "snd-seq" "snd-rawmidi"  ];
   hardware.firmware = with pkgs; [
 	firmwareLinuxNonfree
 	];
+  # Virtualization
   virtualisation.libvirtd.enable = true;
+  #virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "senchou" "root" ];
   hardware.opengl = {
 	enable = true;
 	driSupport32Bit = true;
 	driSupport = true;
   extraPackages = with pkgs; [
     libva1
+    rocm-opencl-icd
+    rocm-opencl-runtime
   ];
 
 
   };
   # Waydroid
   virtualisation.waydroid.enable = true;
+  # docker
+  virtualisation.docker.enable = true;
   #Postgresql
   services.postgresql = {
     enable = true;
@@ -166,5 +175,6 @@
       GRANT ALL PRIVILEGES ON DATABASE nixcloud TO nixcloud;
     '';
   };
-
+  services.flatpak.enable = true;
+#  boot.zfs.extraPools = [ "hddPool" ];
 }
