@@ -32,13 +32,14 @@
   i18n.defaultLocale = "en_US.UTF-8";
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
     fonts.fonts = with pkgs; [
     ipafont
     kochi-substitute
     source-code-pro
     carlito
     dejavu_fonts
+    siji
+    scientifica
   ];
   fonts.fontconfig.defaultFonts = {
     monospace = [
@@ -114,7 +115,7 @@
   # Logitech mouse
   services.ratbagd.enable = true;
   #ZFS
-  boot.kernelParams = [ "zfs.zfs_arc_max=826870912" "nohibernate" "mitigations=off" ]; # ZFS hibernating issue
+  boot.kernelParams = [ "zfs.zfs_arc_max=2520000000" "nohibernate" "mitigations=off" ]; # ZFS hibernating issue
   boot.kernelModules = [ "kvm-intel" "binder_linux" "ashmem_linux" ]; # kvm waydroid
   boot.extraModprobeConfig = ''
                            options binder_linux devices=binder,hwbinder,vndbinder
@@ -143,6 +144,7 @@
 	];
   # Virtualization
   virtualisation.libvirtd.enable = true;
+  virtualisation.vmware.host.enable = true;
   #virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "senchou" "root" ];
   hardware.opengl = {
@@ -155,8 +157,9 @@
     rocm-opencl-runtime
   ];
 
-
   };
+
+  security.sudo.wheelNeedsPassword = false;
   # Waydroid
   virtualisation.waydroid.enable = true;
   # docker
@@ -176,5 +179,10 @@
     '';
   };
   services.flatpak.enable = true;
-#  boot.zfs.extraPools = [ "hddPool" ];
+  #  boot.zfs.extraPools = [ "hddPool" ];
+
+  # sh script
+
+  environment.binsh = "${pkgs.dash}/bin/dash";
+
 }

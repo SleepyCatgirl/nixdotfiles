@@ -7,7 +7,11 @@
     (import (builtins.fetchTarball {
       url = "https://github.com/nix-community/emacs-overlay/archive/f3c435a5e5cfa3ce1b2f50ba37b9cacfec4139d9.tar.gz";
       sha256 = "1k91djyfmwyb3hs0i60cvchyzvb3d5g2jhyb3mrnzs0rjr7siprj";
-    }))];
+    }))
+    (self: super: {
+      emacsPgtk = super.emacsPgtk.override {
+        withXwidgets = true;
+        withGTK3 = true;};})];
    environment.systemPackages = with pkgs;
         let
           R-with-pkgs = rWrapper.override{packages = with rPackages; [ggplot2 tidyverse];};
@@ -15,6 +19,7 @@
             tqdm
             requests
           ];
+#          ffmpeg-jack = ffmpeg-full.overrideAttrs (oldAttrs: rec {libjack2 = true;});
           wayPython = python3.withPackages waydroidPython;
           obsPlug = wrapOBS {
             plugins = with obs-studio-plugins; [
@@ -26,8 +31,11 @@
             vim emacsPgtk ripgrep coreutils fd sqlite 
             wget git unzip # Basic tools
             vulkan-tools google-chrome  pulsemixer # web browser, chat, audio mixer
-            clojure leiningen # Clojure dev
+            clojure leiningen babashka # Clojure dev
             cabal-install haskell-language-server ghc stack# Haskell dev
+            haskellPackages.haskell-language-server
+            haskellPackages.hoogle
+            xmobar
             dmenu pywal polybarFull bspwm sxhkd # WM aesthics
             unrar-wrapper # unrar
             gnome.gnome-tweaks # Gnome aesthics
@@ -53,15 +61,17 @@
             gcc gdb
 
             anki # learning
+            tesseract5 # OCR -> For manga, japanese
             qutebrowser python39Packages.adblock # alternative web browser
-            kepubify calibre # Books
+            kepubify # calibre # Books
             xorg.xhost
             sbcl # Common Lisp compiler
             xcolor # Color picker Xorg
             libvterm cmake gnumake libtool # Terminal emulator library for vterm
             #obs-studio # Streaming/Discord
             obsPlug
-            qjackctl # JACK software
+            qjackctl jack_capture carla # JACK software
+            filezilla # FTP GUI software
             zathura # PDF reading
             fluidsynth # midi for elona+
             mpd ncmpcpp
@@ -93,7 +103,7 @@
             virglrenderer
 
             # Video edit
-            ffmpeg
+            ffmpeg-full
 
             # zip
             p7zip
@@ -119,7 +129,36 @@
             mangohud
             # For appimages
             appimage-run
+            ncurses ncurses5
+            parallel
 
+
+            # Manga
+            hakuneko
+            # zip
+            zip
+
+            # Epic gl
+            legendary-gl rare heroic
+
+            # cpu power
+            linuxKernel.packages.linux_xanmod.cpupower
+
+            # monitor
+            htop bpytop
+            # Space
+            ncdu
+
+            #steam
+            steamcmd
+
+            # prolog
+            swiProlog scryer-prolog
+
+            #julia
+            #(fhsCommand "julia" "julia") (fhsCommand "julia-bash" "bash")
+            #cairo
+            distrobox
           ];
    programs.steam.enable = true; # steam
    programs.adb.enable = true;

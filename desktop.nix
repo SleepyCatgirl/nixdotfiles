@@ -9,6 +9,13 @@
   environment.gnome.excludePackages = [ pkgs.gnome.cheese pkgs.gnome.gnome-music pkgs.evince pkgs.gnome.gnome-characters pkgs.gnome.totem
                                       ];
   services.xserver.windowManager.bspwm.enable = true;
-
-
+  services.xserver.windowManager.xmonad = {
+    enable = true;
+    enableContribAndExtras = true;
+    extraPackages = haskellPackages: [
+      haskellPackages.dbus
+      haskellPackages.xmonad
+      haskellPackages.xmobar
+    ];
+  };
 }

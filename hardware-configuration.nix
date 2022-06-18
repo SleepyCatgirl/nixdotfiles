@@ -39,11 +39,7 @@
     { device = "hddPool/flatpak";
       fsType = "zfs";
     };
-  fileSystems."/run/media/HDD/.WoT" = 
-    { device = "hddPool/WoT";
-      fsType = "zfs";
-    };
- 
+
   fileSystems."/home/senchou/.WoT" =
     { device = "ssdPool/WoWs";
       fsType = "zfs";
