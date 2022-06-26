@@ -63,7 +63,7 @@
             anki # learning
             tesseract5 # OCR -> For manga, japanese
             qutebrowser python39Packages.adblock # alternative web browser
-            kepubify # calibre # Books
+            kepubify calibre # Books
             xorg.xhost
             sbcl # Common Lisp compiler
             xcolor # Color picker Xorg
@@ -71,6 +71,7 @@
             #obs-studio # Streaming/Discord
             obsPlug
             qjackctl jack_capture carla # JACK software
+            easyeffects # audio
             filezilla # FTP GUI software
             zathura # PDF reading
             fluidsynth # midi for elona+
@@ -159,6 +160,7 @@
             #(fhsCommand "julia" "julia") (fhsCommand "julia-bash" "bash")
             #cairo
             distrobox
+            x11vnc
           ];
    programs.steam.enable = true; # steam
    programs.adb.enable = true;
