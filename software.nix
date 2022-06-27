@@ -91,8 +91,9 @@
             # Gaming
             lutris
             # waydroid
-            waydroid lxc
-            wayPython lzip
+            #waydroid 
+            #wayPython
+            lzip lxc
 
             # Wayland
             hikari river rivercarro wayvnc grim slurp weston
