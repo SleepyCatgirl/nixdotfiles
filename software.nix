@@ -9,6 +9,9 @@
       sha256 = "1k91djyfmwyb3hs0i60cvchyzvb3d5g2jhyb3mrnzs0rjr7siprj";
     }))
     (self: super: {
+      # jack support for mpv
+      mpv = super.wrapMpv (super.mpv.unwrapped.override {jackaudioSupport = true;}) {};
+      # emacs with Xwidgets and GTK3
       emacsPgtk = super.emacsPgtk.override {
         withXwidgets = true;
         withGTK3 = true;};})];
