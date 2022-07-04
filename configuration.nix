@@ -31,7 +31,11 @@
   #
   i18n.defaultLocale = "en_US.UTF-8";
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    # enable wacom support
+    wacom.enable = true;
+  };
     fonts.fonts = with pkgs; [
     ipafont
     kochi-substitute
@@ -187,5 +191,6 @@
   # sh script
 
   environment.binsh = "${pkgs.dash}/bin/dash";
+
 
 }
