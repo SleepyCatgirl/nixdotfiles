@@ -21,7 +21,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Warsaw";
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -34,7 +34,7 @@
   services.xserver = {
     enable = true;
     # enable wacom support
-    wacom.enable = true;
+    # wacom.enable = true;
   };
     fonts.fonts = with pkgs; [
     ipafont
@@ -191,6 +191,8 @@
   # sh script
 
   environment.binsh = "${pkgs.dash}/bin/dash";
+hardware.opentabletdriver.enable = true;
+
 
 
 }
