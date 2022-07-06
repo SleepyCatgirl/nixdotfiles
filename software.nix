@@ -165,6 +165,7 @@
             #cairo
             distrobox
             x11vnc
+            osu-lazer
           ];
    programs.steam.enable = true; # steam
    programs.adb.enable = true;
