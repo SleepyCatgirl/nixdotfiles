@@ -63,7 +63,7 @@
             cling clang ccls # C++ Dev
             gcc gdb
 
-            anki # learning
+            anki-bin # learning
             tesseract5 # OCR -> For manga, japanese
             qutebrowser python39Packages.adblock # alternative web browser
             kepubify calibre # Books
