@@ -166,6 +166,11 @@
             distrobox
             x11vnc
             osu-lazer
+
+
+
+            # Fcitx qt support
+            fcitx5-gtk libsForQt5.fcitx-qt5
           ];
    programs.steam.enable = true; # steam
    programs.adb.enable = true;
