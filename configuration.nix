@@ -144,7 +144,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
   # Hardwar accel etc
-  services.xserver.videoDrivers = [ "amdgpu" "intel" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   boot.initrd.kernelModules = [ "snd-seq" "snd-rawmidi"  ];
   hardware.firmware = with pkgs; [
 	firmwareLinuxNonfree
