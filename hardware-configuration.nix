@@ -35,6 +35,10 @@
     { device = "hddPool/oblivion";
       fsType = "zfs";
     };
+  fileSystems."/run/media/HDD/Games/STALKERSoC" =
+    { device = "hddPool/STALKERSoC";
+      fsType = "zfs";
+    };
   fileSystems."/run/media/HDD/.var" =
     { device = "hddPool/flatpak";
       fsType = "zfs";
