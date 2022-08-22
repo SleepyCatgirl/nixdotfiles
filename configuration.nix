@@ -191,8 +191,5 @@
   # sh script
 
   environment.binsh = "${pkgs.dash}/bin/dash";
-hardware.opentabletdriver.enable = true;
-
-
-
+  hardware.opentabletdriver.enable = true;
 }
