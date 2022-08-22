@@ -18,4 +18,16 @@
       haskellPackages.xmobar
     ];
   };
+
+  
+  nixpkgs.config.bitlbee.enableLibPurple = true;
+  
+  services.bitlbee = {
+    enable = true;
+    libpurple_plugins = [
+      pkgs.purple-discord
+      # all plugins: `nix-env -qaP | grep purple-`
+    ];
+  };
+  
 }

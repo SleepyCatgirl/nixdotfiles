@@ -22,6 +22,9 @@
             tqdm
             requests
           ];
+          pidgin-with-plugins = pkgs.pidgin.override {
+            plugins = [purple-discord];
+          };
 #          ffmpeg-jack = ffmpeg-full.overrideAttrs (oldAttrs: rec {libjack2 = true;});
           wayPython = python3.withPackages waydroidPython;
           obsPlug = wrapOBS {
@@ -174,6 +177,9 @@
 
             # Gaming more
             gamescope
+
+            # chat
+            pidgin-with-plugins ripcord
           ];
    programs.steam.enable = true; # steam
    programs.adb.enable = true;
