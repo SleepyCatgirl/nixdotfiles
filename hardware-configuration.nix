@@ -48,6 +48,14 @@
     { device = "ssdPool/WoWs";
       fsType = "zfs";
     };
+  fileSystems."/home/senchou/vmware" =
+    { device = "ssdPool/VM";
+      fsType = "zfs";
+    };
+  fileSystems."/home/senchou/vmware/Win10" =
+    { device = "ssdPool/VM/Win10";
+      fsType = "zfs";
+    };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/9AA8-C873";
