@@ -121,7 +121,7 @@
   # Logitech mouse
   services.ratbagd.enable = true;
   #ZFS
-  boot.kernelParams = [ "zfs.zfs_arc_max=2520000000" "nohibernate" "mitigations=off" ]; # ZFS hibernating issue
+  boot.kernelParams = [ "zfs.zfs_arc_max=3120000000" "nohibernate" "mitigations=off" ]; # ZFS hibernating issue
   boot.kernelModules = [ "kvm-intel" "binder_linux" "ashmem_linux" ]; # kvm waydroid
   boot.extraModprobeConfig = ''
                            options binder_linux devices=binder,hwbinder,vndbinder
