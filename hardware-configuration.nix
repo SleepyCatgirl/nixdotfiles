@@ -27,22 +27,6 @@
     { device = "ssdPool/local/nix";
       fsType = "zfs";
     };
-  fileSystems."/run/media/HDD" =
-    { device = "hddPool/hdd";
-      fsType = "zfs";
-    };
-  fileSystems."/run/media/HDD/Games/Oblivion" =
-    { device = "hddPool/oblivion";
-      fsType = "zfs";
-    };
-  fileSystems."/run/media/HDD/Games/STALKERSoC" =
-    { device = "hddPool/STALKERSoC";
-      fsType = "zfs";
-    };
-  fileSystems."/run/media/HDD/.var" =
-    { device = "hddPool/flatpak";
-      fsType = "zfs";
-    };
 
   fileSystems."/home/senchou/.WoT" =
     { device = "ssdPool/WoWs";

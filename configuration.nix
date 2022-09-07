@@ -186,7 +186,8 @@
     '';
   };
   services.flatpak.enable = true;
-  #  boot.zfs.extraPools = [ "hddPool" ];
+  boot.zfs.extraPools = [ "hddPool" ];
+  boot.zfs.forceImportAll = true;
 
   # sh script
 
