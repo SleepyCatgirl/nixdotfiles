@@ -23,7 +23,7 @@
       fsType = "zfs";
     };
 
-  fileSystems."/nix" =
+ fileSystems."/nix" =
     { device = "ssdPool/local/nix";
       fsType = "zfs";
     };
