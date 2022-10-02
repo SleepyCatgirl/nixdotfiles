@@ -36,7 +36,8 @@
           [
             vim emacsPgtk ripgrep coreutils fd sqlite 
             wget git unzip # Basic tools
-            vulkan-tools google-chrome  pulsemixer # web browser, chat, audio mixer
+            vulkan-tools pulsemixer # vulkan,, audio mixer
+            google-chrome librewolf #web browsers
             clojure leiningen babashka # Clojure dev
             cabal-install haskell-language-server ghc stack# Haskell dev
             haskellPackages.haskell-language-server
