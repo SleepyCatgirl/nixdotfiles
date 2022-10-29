@@ -39,6 +39,7 @@
             vulkan-tools pulsemixer # vulkan,, audio mixer
             google-chrome librewolf #web browsers
             clojure leiningen babashka # Clojure dev
+            racket # Racket
             cabal-install haskell-language-server ghc stack# Haskell dev
             haskellPackages.haskell-language-server
             haskellPackages.hoogle
@@ -171,7 +172,7 @@
             x11vnc
             osu-lazer
 
-
+            bottles
 
             # Fcitx qt support
             fcitx5-gtk libsForQt5.fcitx-qt5
@@ -182,6 +183,23 @@
             # chat
             pidgin-with-plugins ripcord
           ];
+
    programs.steam.enable = true; # steam
+#   nixpkgs.config.packageOverrides = pkgs: {
+#     steam = pkgs.steam.override {
+#       extraPkgs = pkgs: with pkgs; [
+#         keyutils
+#         libkrb5
+#         libpng
+#         libpulseaudio
+#         libvorbis
+#         stdenv.cc.cc.lib
+#         xorg.libXcursor
+#         xorg.libXi
+#         xorg.libXinerama
+#         xorg.libXScrnSaver
+#       ];
+#     };
+#   };
    programs.adb.enable = true;
 }
