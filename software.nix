@@ -38,7 +38,7 @@
             wget git unzip # Basic tools
             vulkan-tools pulsemixer # vulkan,, audio mixer
             google-chrome librewolf #web browsers
-            clojure leiningen babashka # Clojure dev
+            clojure leiningen babashka clj-kondo clojure-lsp # Clojure dev
             racket # Racket
             cabal-install haskell-language-server ghc stack# Haskell dev
             haskellPackages.haskell-language-server
@@ -182,6 +182,8 @@
 
             # chat
             pidgin-with-plugins ripcord
+
+            i3lock
           ];
 
    programs.steam.enable = true; # steam
