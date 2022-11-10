@@ -38,6 +38,7 @@
             wget git unzip # Basic tools
             vulkan-tools pulsemixer # vulkan,, audio mixer
             google-chrome librewolf #web browsers
+            tor-browser-bundle-bin # Web browser p r i v a cy on ion
             clojure leiningen babashka clj-kondo clojure-lsp # Clojure dev
             racket # Racket
             cabal-install haskell-language-server ghc stack# Haskell dev
