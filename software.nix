@@ -78,6 +78,7 @@
             xcolor # Color picker Xorg
             libvterm cmake gnumake libtool # Terminal emulator library for vterm
             #obs-studio # Streaming/Discord
+            discord
             obsPlug
             qjackctl jack_capture carla # JACK software
             easyeffects # audio

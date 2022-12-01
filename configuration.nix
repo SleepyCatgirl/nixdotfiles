@@ -46,6 +46,7 @@
     scientifica
     rounded-mgenplus
     hanazono
+    cherry
   ];
   fonts.fontconfig.defaultFonts = {
     monospace = [
