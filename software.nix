@@ -11,10 +11,7 @@
     (self: super: {
       # jack support for mpv
       mpv = super.wrapMpv (super.mpv.unwrapped.override {jackaudioSupport = true;}) {};
-      # emacs with Xwidgets and GTK3
-      emacsPgtk = super.emacsPgtk.override {
-        withXwidgets = true;
-        withGTK3 = true;};})];
+    })];
    environment.systemPackages = with pkgs;
         let
           R-with-pkgs = rWrapper.override{packages = with rPackages; [ggplot2 tidyverse];};
@@ -34,7 +31,7 @@
           };
         in
           [
-            vim emacsPgtk ripgrep coreutils fd sqlite 
+            vim emacs ripgrep coreutils fd sqlite 
             wget git unzip # Basic tools
             vulkan-tools pulsemixer # vulkan,, audio mixer
             google-chrome librewolf #web browsers
@@ -186,6 +183,9 @@
             pidgin-with-plugins ripcord
 
             i3lock
+            arch-install-scripts
+            protontricks
+            dosbox
           ];
 
    programs.steam.enable = true; # steam

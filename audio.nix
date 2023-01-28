@@ -17,4 +17,7 @@
   services.jack = {
     jackd.enable = false;
   };
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 }

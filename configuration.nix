@@ -161,8 +161,8 @@
 	driSupport = true;
   extraPackages = with pkgs; [
     libva1
-    rocm-opencl-icd
-    rocm-opencl-runtime
+#    rocm-opencl-icd
+#    rocm-opencl-runtime
   ];
 
   };
@@ -194,4 +194,15 @@
 
   environment.binsh = "${pkgs.dash}/bin/dash";
   hardware.opentabletdriver.enable = true;
+
+  services =
+    {
+      syncthing = {
+        enable = true;
+        user = "senchou";
+        configDir = "/home/senchou/.config/syncthing";
+      };
+    };
+
+  services.teamviewer.enable = true;
 }
