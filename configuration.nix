@@ -111,7 +111,7 @@
 
   # Enable the OpenSSH daemon.
    services.openssh.enable = true;
-   services.openssh.permitRootLogin = "yes";
+   services.openssh.settings.permitRootLogin = "yes";
    services.sshd.enable = true;
 
   # Open ports in the firewall.
