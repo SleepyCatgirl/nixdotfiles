@@ -70,7 +70,6 @@
   zramSwap = {
     enable = true;
     memoryPercent = 110;
-    numDevices = 1;
   };
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -207,4 +206,8 @@
   services.teamviewer.enable = true;
 
   services.zerotierone.enable = true;
+  # Fix insecure thingy
+  nixpkgs.config.permittedInsecurePackages = [
+    "python-2.7.18.6"
+  ];
 }

@@ -154,7 +154,7 @@
             linuxKernel.packages.linux_xanmod.cpupower
 
             # monitor
-            htop bpytop
+            htop btop
             # Space
             ncdu
 
