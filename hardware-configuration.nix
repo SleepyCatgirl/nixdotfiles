@@ -28,10 +28,10 @@
       fsType = "zfs";
     };
 
-  fileSystems."/home/senchou/.WoT" =
-    { device = "ssdPool/WoWs";
-      fsType = "zfs";
-    };
+#  fileSystems."/home/senchou/.WoT" =
+#    { device = "ssdPool/WoWs";
+#      fsType = "zfs";
+#    };
   fileSystems."/home/senchou/vmware" =
     { device = "ssdPool/VM";
       fsType = "zfs";
