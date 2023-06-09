@@ -169,7 +169,7 @@
 
   security.sudo.wheelNeedsPassword = false;
   # Waydroid
-  virtualisation.waydroid.enable = false;
+  virtualisation.waydroid.enable = true;
   # docker
   virtualisation.docker.enable = true;
   #Postgresql

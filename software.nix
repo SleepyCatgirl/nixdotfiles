@@ -99,7 +99,7 @@
             lutris
             # waydroid
             #waydroid 
-            #wayPython
+            wayPython
             lzip lxc
 
             # Wayland
@@ -186,6 +186,7 @@
             arch-install-scripts
             protontricks
             dosbox
+            unar
           ];
 
    programs.steam.enable = true; # steam
