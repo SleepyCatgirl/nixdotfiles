@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  xdg = {
-    portal.enable = true;
-    portal.wlr.enable = true;
-  };
+  xdg.portal.enable = lib.mkForce false;
+  xdg.portal.gtkUsePortal = false;
   services.dbus.enable = true;
 }

@@ -124,7 +124,7 @@
             # Remote screen <-> Android
             scrcpy
 
-            openssl
+#            openssl
             # sync
             syncthing
 
@@ -173,14 +173,11 @@
 
             bottles
 
-            # Fcitx qt support
-            fcitx5-gtk libsForQt5.fcitx-qt5
-
             # Gaming more
             gamescope
 
             # chat
-            pidgin-with-plugins ripcord
+            pidgin-with-plugins 
 
             i3lock
             arch-install-scripts
@@ -189,7 +186,7 @@
             unar
           ];
 
-   programs.steam.enable = true; # steam
+   #programs.steam.enable = true; # steam
 #   nixpkgs.config.packageOverrides = pkgs: {
 #     steam = pkgs.steam.override {
 #       extraPkgs = pkgs: with pkgs; [
@@ -205,6 +202,12 @@
 #         xorg.libXScrnSaver
 #       ];
 #     };
-#   };
+   #   };
+ programs.steam = {
+    enable = true;
+    package = with pkgs; steam.override { extraPkgs = pkgs: [ attr ]; };
+  };
+
+
    programs.adb.enable = true;
 }

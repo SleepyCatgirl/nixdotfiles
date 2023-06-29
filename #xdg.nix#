@@ -1,0 +1,7 @@
+{ config, lib, pkgs, ... }:
+
+{ 
+  xdg.portal.enable = true;
+  xdg.portal.extraPora
+  services.dbus.enable = true;
+}

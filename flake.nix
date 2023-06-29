@@ -2,6 +2,7 @@
   description = "PC NixOS configuration";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 ##    hyprland = {
 ##      url = "github:vaxerski/Hyprland";
 ##      inputs.nixpkgs.follows = "nixpkgs";

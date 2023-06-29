@@ -20,6 +20,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  systemd.services.systemd-udev-settle.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
@@ -111,12 +112,12 @@
 
   # Enable the OpenSSH daemon.
    services.openssh.enable = true;
-   services.openssh.settings.permitRootLogin = "yes";
-   services.sshd.enable = true;
+#  services.openssh.settings.permitRootLogin = "yes";
+#   services.sshd.enable = true;
 
   # Open ports in the firewall.
-   networking.firewall.allowedTCPPorts = [ 5900 ];
-   networking.firewall.allowedUDPPorts = [ 5900 ];
+   networking.firewall.allowedTCPPorts = [ 5900 9993 ];
+   networking.firewall.allowedUDPPorts = [ 5900 9993 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   # Logitech mouse
@@ -186,7 +187,7 @@
       GRANT ALL PRIVILEGES ON DATABASE nixcloud TO nixcloud;
     '';
   };
-  services.flatpak.enable = true;
+  services.flatpak.enable = false;
   boot.zfs.extraPools = [ "hddPool" ];
   boot.zfs.forceImportAll = true;
 
@@ -206,9 +207,19 @@
 
   services.teamviewer.enable = true;
 
-  services.zerotierone.enable = true;
   # Fix insecure thingy
   nixpkgs.config.permittedInsecurePackages = [
     "python-2.7.18.6"
+    "openssl-1.1.1u"
   ];
+
+  services.privoxy =
+    {
+      # TODO FIX
+      enable = true;
+      settings =  {
+        listen-addess = "[::]:8118";
+      };
+    };
+    
 }
