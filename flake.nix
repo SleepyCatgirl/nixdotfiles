@@ -2,21 +2,17 @@
   description = "PC NixOS configuration";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
-##    hyprland = {
-##      url = "github:vaxerski/Hyprland";
-##      inputs.nixpkgs.follows = "nixpkgs";
-##    };
+    dzgui-nix.url = "github:lelgenio/dzgui-nix";
+    dzgui-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, nixos }:
+  outputs = { self, nixpkgs, nixos, dzgui-nix }:
     {
     nixosConfigurations.senchou-desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        dzgui-nix.nixosModules.default 
         ./configuration.nix
-#        hyprland.nixosModules.default
-#        { programs.hyprland.enable = true ;}
-                ];
+      ];
     };
   };
 }
