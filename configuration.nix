@@ -153,6 +153,13 @@
     open = false;
     nvidiaSettings = true;
   };
+  ## Separate boot for vulkan-beta
+  specialisation = {
+    vulkanBeta.configuration = {
+      system.nixos.tags = ["vulkanBeta"];
+      hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta
+    }
+  }
 
 
   boot.initrd.kernelModules = [ "snd-seq" "snd-rawmidi" ];
