@@ -149,6 +149,7 @@
   # services.xserver.videoDrivers = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
     open = false;
     nvidiaSettings = true;
@@ -157,9 +158,9 @@
   specialisation = {
     vulkanBeta.configuration = {
       system.nixos.tags = ["vulkanBeta"];
-      hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta
-    }
-  }
+      hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+    };
+  };
 
 
   boot.initrd.kernelModules = [ "snd-seq" "snd-rawmidi" ];
