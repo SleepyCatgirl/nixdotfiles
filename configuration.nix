@@ -123,7 +123,7 @@
   # Logitech mouse
   services.ratbagd.enable = true;
   #ZFS
-  boot.kernelParams = [ "zfs.zfs_arc_max=3120000000" "nohibernate" "mitigations=off" ]; # ZFS hibernating issue
+  boot.kernelParams = [ "zfs.zfs_arc_max=3120000000" "nohibernate" "mitigations=off" "nvidia-drm.modeset=1" ]; # ZFS hibernating issue
   boot.kernelModules = [ "kvm-intel" "binder_linux" "ashmem_linux" ]; # kvm waydroid
   boot.extraModprobeConfig = ''
                            options binder_linux devices=binder,hwbinder,vndbinder
@@ -146,8 +146,16 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
   # Hardwar accel etc
-  services.xserver.videoDrivers = [ "amdgpu" ];
-  boot.initrd.kernelModules = [ "snd-seq" "snd-rawmidi"  ];
+  # services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+    nvidiaSettings = true;
+  };
+
+
+  boot.initrd.kernelModules = [ "snd-seq" "snd-rawmidi" ];
   hardware.firmware = with pkgs; [
 	firmwareLinuxNonfree
 	];
@@ -162,6 +170,7 @@
 	driSupport = true;
   extraPackages = with pkgs; [
     libva1
+#    mesa.opencl
 #    rocm-opencl-icd
 #    rocm-opencl-runtime
   ];
@@ -170,7 +179,7 @@
 
   security.sudo.wheelNeedsPassword = false;
   # Waydroid
-  virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = false;
   # docker
   virtualisation.docker.enable = true;
   #Postgresql
@@ -187,7 +196,7 @@
       GRANT ALL PRIVILEGES ON DATABASE nixcloud TO nixcloud;
     '';
   };
-  services.flatpak.enable = false;
+  services.flatpak.enable = true;
   boot.zfs.extraPools = [ "hddPool" ];
   boot.zfs.forceImportAll = true;
 
@@ -213,13 +222,25 @@
     "openssl-1.1.1u"
   ];
 
-  services.privoxy =
-    {
-      # TODO FIX
-      enable = true;
-      settings =  {
-        listen-addess = "[::]:8118";
+  programs.criu.enable = true;
+  hardware.xone.enable = true;
+
+  # polkit
+  security.polkit.enable = true;
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
       };
     };
-    
+  };
+
 }

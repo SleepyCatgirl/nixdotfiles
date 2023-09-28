@@ -15,15 +15,6 @@
    environment.systemPackages = with pkgs;
         let
           R-with-pkgs = rWrapper.override{packages = with rPackages; [ggplot2 tidyverse];};
-          waydroidPython = python-packages: with python-packages; [
-            tqdm
-            requests
-          ];
-          pidgin-with-plugins = pkgs.pidgin.override {
-            plugins = [purple-discord];
-          };
-#          ffmpeg-jack = ffmpeg-full.overrideAttrs (oldAttrs: rec {libjack2 = true;});
-          wayPython = python3.withPackages waydroidPython;
           obsPlug = wrapOBS {
             plugins = with obs-studio-plugins; [
               wlrobs
@@ -87,7 +78,7 @@
             # Pixelart
             aseprite-unfree
             # Uni
-            teams
+            #teams
             # Image manipulation/view
 	          feh
             imagemagick
@@ -99,13 +90,14 @@
             lutris
             # waydroid
             #waydroid 
-            wayPython
+            #wayPython
             lzip lxc
 
             # Wayland
-            hikari river rivercarro wayvnc grim slurp weston
-            waybar rofi-wayland wl-clipboard
-            nomacs dunst swaybg
+            #hikari river rivercarro wayvnc grim slurp weston
+            #waybar rofi-wayland wl-clipboard
+            #nomacs dunst swaybg
+            weston
 
             # Virt
             virt-manager
@@ -148,10 +140,10 @@
             zip
 
             # Epic gl
-            legendary-gl rare heroic
+            #legendary-gl rare heroic
 
             # cpu power
-            linuxKernel.packages.linux_xanmod.cpupower
+            #linuxKernel.packages.linux_xanmod.cpupower
 
             # monitor
             htop btop
@@ -162,28 +154,43 @@
             steamcmd
 
             # prolog
-            swiProlog scryer-prolog
+            #swiProlog scryer-prolog
 
             #julia
             #(fhsCommand "julia" "julia") (fhsCommand "julia-bash" "bash")
             #cairo
             distrobox
-            x11vnc
-            osu-lazer
+            #x11vnc
+            #osu-lazer
 
-            bottles
+            #bottles
 
             # Gaming more
             gamescope
 
             # chat
-            pidgin-with-plugins 
+            #pidgin-with-plugins 
 
             i3lock
-            arch-install-scripts
+#            arch-install-scripts # Disabled, due to issues
             protontricks
             dosbox
             unar
+            xboxdrv
+            antimicrox
+
+
+            retroarchFull
+
+            # Steam fix with xdg-desktop?
+            libnma
+
+            # Japanese
+            # mecab python310Packages.pip
+            # ASM
+            vice
+            # Deal with rar files in comfy wa
+            rar2fs
           ];
 
    #programs.steam.enable = true; # steam
@@ -210,6 +217,4 @@
 
 
  programs.adb.enable = true;
- ## DZGUI
- programs.dzgui.enable = true;
 }

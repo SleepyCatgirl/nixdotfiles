@@ -40,7 +40,11 @@
     { device = "ssdPool/VM/Win10";
       fsType = "zfs";
     };
-
+#  fileSystems."/home/senchou/.steam/steam/steamapps/common/ForzaHorizon5CompressionOff" =
+#    { device = "ssdPool/ForzaHorizon";
+#      fsType = "zfs";
+#    };
+#
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/9AA8-C873";
       fsType = "vfat";

@@ -19,6 +19,6 @@
   };
   # Bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.package = pkgs.bluezFull;
+  # hardware.bluetooth.package = pkgs.bluezFull;
   services.blueman.enable = true;
 }
