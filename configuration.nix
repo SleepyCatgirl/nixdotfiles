@@ -38,7 +38,7 @@
     # enable wacom support
     # wacom.enable = true;
   };
-    fonts.fonts = with pkgs; [
+    fonts.packages = with pkgs; [
     ipafont
     kochi-substitute
     source-code-pro
