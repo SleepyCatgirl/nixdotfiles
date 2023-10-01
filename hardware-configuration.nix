@@ -53,3 +53,11 @@
   swapDevices = [ ];
 
 }
+
+
+  #  How to do with zfsutil
+  #   fileSystems."/" =
+  #    { device = "rpool/encrypted/local/root";
+  #      fsType = "zfs";
+  #      options= [ "zfsutil" ];
+  #    };
