@@ -94,10 +94,11 @@
             lzip lxc
 
             # Wayland
-            #hikari river rivercarro wayvnc grim slurp weston
-            #waybar rofi-wayland wl-clipboard
-            #nomacs dunst swaybg
+            hikari river rivercarro wayvnc grim slurp weston mako
+            waybar rofi-wayland wl-clipboard
+            nomacs dunst swaybg
             weston
+            cliphist
 
             # Virt
             virt-manager

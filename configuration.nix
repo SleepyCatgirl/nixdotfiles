@@ -49,6 +49,7 @@
     rounded-mgenplus
     hanazono
     cherry
+    font-awesome
   ];
   fonts.fontconfig.defaultFonts = {
     monospace = [
@@ -116,8 +117,8 @@
 #   services.sshd.enable = true;
 
   # Open ports in the firewall.
-   networking.firewall.allowedTCPPorts = [ 5900 9993 ];
-   networking.firewall.allowedUDPPorts = [ 5900 9993 ];
+   networking.firewall.allowedTCPPorts = [ 5900 9993 42000 42001 ];
+   networking.firewall.allowedUDPPorts = [ 5900 9993 42000 42001 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   # Logitech mouse
@@ -178,6 +179,8 @@
 	driSupport = true;
   extraPackages = with pkgs; [
     libva1
+    # Fix for vulkan renderer wayland
+    vulkan-validation-layers
 #    mesa.opencl
 #    rocm-opencl-icd
 #    rocm-opencl-runtime

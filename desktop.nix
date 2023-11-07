@@ -10,5 +10,6 @@
 #pkgs.xdg-desktop-portal-gnome
                                       ];
   services.xserver.windowManager.bspwm.enable = true;
-    services.gvfs.enable = true;
+  services.gvfs.enable = true;
+  programs.hyprland.enable = true;
 }
