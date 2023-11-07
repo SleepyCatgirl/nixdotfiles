@@ -194,19 +194,19 @@
   # docker
   virtualisation.docker.enable = true;
   #Postgresql
-  services.postgresql = {
-    enable = true;
-    enableTCPIP = true;
-        authentication = pkgs.lib.mkOverride 10 ''
-      local all all trust
-      host all all ::1/128 trust
-    '';
-    initialScript = pkgs.writeText "backend-initScript" ''
-      CREATE ROLE nixcloud WITH LOGIN PASSWORD 'nixcloud' CREATEDB;
-      CREATE DATABASE nixcloud;
-      GRANT ALL PRIVILEGES ON DATABASE nixcloud TO nixcloud;
-    '';
-  };
+#  services.postgresql = {
+#    enable = true;
+#    enableTCPIP = true;
+#        authentication = pkgs.lib.mkOverride 10 ''
+#      local all all trust
+#      host all all ::1/128 trust
+#    '';
+#    initialScript = pkgs.writeText "backend-initScript" ''
+#      CREATE ROLE nixcloud WITH LOGIN PASSWORD 'nixcloud' CREATEDB;
+#      CREATE DATABASE nixcloud;
+#      GRANT ALL PRIVILEGES ON DATABASE nixcloud TO nixcloud;
+#    '';
+#  };
   services.flatpak.enable = true;
   boot.zfs.extraPools = [ "hddPool" ];
   boot.zfs.forceImportAll = true;
