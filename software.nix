@@ -39,6 +39,10 @@
             openvpn # Uni.
             mullvad-vpn # VPN
             openjdk # Java run
+            # minecraft
+            prismlauncher
+            # Java
+            maven 
             wireguard-tools # VPN
             qbittorrent # Torrenting
             R-with-pkgs # R/statistics
@@ -192,6 +196,8 @@
             vice
             # Deal with rar files in comfy wa
             rar2fs
+            # math
+            maxima
           ];
 
    #programs.steam.enable = true; # steam
