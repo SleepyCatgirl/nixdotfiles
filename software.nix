@@ -198,6 +198,9 @@
             rar2fs
             # math
             maxima
+
+            # Ocaml
+            opam ocaml
           ];
 
    #programs.steam.enable = true; # steam
