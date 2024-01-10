@@ -15,6 +15,7 @@
    environment.systemPackages = with pkgs;
         let
           R-with-pkgs = rWrapper.override{packages = with rPackages; [ggplot2 tidyverse];};
+          ollamagpu = pkgs.ollama.override { llama-cpp = (pkgs.llama-cpp.override {cudaSupport = false; openblasSupport = false; stdenv = gcc11Stdenv; }); };
           obsPlug = wrapOBS {
             plugins = with obs-studio-plugins; [
               wlrobs
@@ -22,13 +23,14 @@
           };
         in
           [
+            ollamagpu
             vim emacs ripgrep coreutils fd sqlite 
             wget git unzip # Basic tools
             vulkan-tools pulsemixer # vulkan,, audio mixer
-            google-chrome librewolf #web browsers
+            google-chrome  #librewolf #web browsers
             tor-browser-bundle-bin # Web browser p r i v a cy on ion
             clojure leiningen babashka clj-kondo clojure-lsp # Clojure dev
-            racket # Racket
+            #racket # Racket
             cabal-install haskell-language-server ghc stack# Haskell dev
             haskellPackages.haskell-language-server
             haskellPackages.hoogle
@@ -45,7 +47,7 @@
             maven 
             wireguard-tools # VPN
             qbittorrent # Torrenting
-            R-with-pkgs # R/statistics
+            #R-with-pkgs # R/statistics
             scrot xclip # screenshoting and putting them in copy paste
             nethack cool-retro-term # gaming
             angband crawl           # gameeeess
@@ -58,12 +60,13 @@
             piper # logitech libratbagd GTK frontend
             # For configuring them
             virglrenderer # 3D Render for VMs
-            cling clang ccls # C++ Dev
+            #cling
+            clang ccls # C++ Dev
             gcc gdb
 
             anki-bin # learning
             tesseract5 # OCR -> For manga, japanese
-            qutebrowser python39Packages.adblock # alternative web browser
+            #qutebrowser python39Packages.adblock # alternative web browser
             kepubify calibre # Books
             xorg.xhost
             sbcl # Common Lisp compiler
@@ -74,7 +77,7 @@
             obsPlug
             qjackctl jack_capture carla # JACK software
             easyeffects # audio
-            filezilla # FTP GUI software
+            #filezilla # FTP GUI software
             zathura # PDF reading
             fluidsynth # midi for elona+
             mpd ncmpcpp
@@ -98,7 +101,8 @@
             lzip lxc
 
             # Wayland
-            hikari river rivercarro wayvnc grim slurp weston mako
+            #hikari river rivercarro
+            wayvnc grim slurp weston mako
             waybar rofi-wayland wl-clipboard
             nomacs dunst swaybg
             weston
@@ -115,7 +119,7 @@
             p7zip
 
             # BTRFS
-            btrfs-progs compsize
+            #btrfs-progs compsize
             # ssh
             ssh-askpass-fullscreen
             # Remote screen <-> Android
@@ -185,7 +189,7 @@
             antimicrox
 
 
-            retroarchFull
+            #retroarchFull
 
             # Steam fix with xdg-desktop?
             libnma

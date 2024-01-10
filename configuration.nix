@@ -72,8 +72,14 @@
 #  services.logind.lidSwitchDocked = "suspend";
   zramSwap = {
     enable = true;
-    memoryPercent = 110;
+    memoryPercent = 100;
+    priority = 180;
+    algorithm = "lz4";
   };
+  boot.kernel.sysctl = { "vm.swappiness" = 180;
+			 "vm.watermark_boost_factor" = 0;
+		 	 "vm.watermark_scale_factor" = 125;
+			 "vm.page-cluster" = 0;};
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
@@ -150,16 +156,16 @@
   # services.xserver.videoDrivers = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
     modesetting.enable = true;
     open = false;
     nvidiaSettings = true;
   };
-  ## Separate boot for vulkan-beta
+  ## Separate boot for stable
   specialisation = {
     vulkanBeta.configuration = {
-      system.nixos.tags = ["vulkanBeta"];
-      hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+      system.nixos.tags = ["stable"];
+      hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
 
@@ -192,10 +198,11 @@
   # Waydroid
   virtualisation.waydroid.enable = false;
   # docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = false;
   #Postgresql
   services.postgresql = {
     enable = true;
+    package = pkgs.postgresql_16;
     enableTCPIP = true;
         authentication = pkgs.lib.mkOverride 10 ''
       local all all trust
@@ -232,7 +239,7 @@
     "python-2.7.18.6"
     "openssl-1.1.1u"
   ];
-
+	
   programs.criu.enable = true;
   hardware.xone.enable = true;
 
