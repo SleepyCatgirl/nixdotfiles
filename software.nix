@@ -15,7 +15,7 @@
    environment.systemPackages = with pkgs;
         let
           R-with-pkgs = rWrapper.override{packages = with rPackages; [ggplot2 tidyverse];};
-          ollamagpu = pkgs.ollama.override { llama-cpp = (pkgs.llama-cpp.override {cudaSupport = false; openblasSupport = false; stdenv = gcc11Stdenv; }); };
+          #ollamagpu = pkgs.ollama.override { llama-cpp = (pkgs.llama-cpp.override {cudaSupport = false; openblasSupport = false; stdenv = gcc11Stdenv; }); };
           obsPlug = wrapOBS {
             plugins = with obs-studio-plugins; [
               wlrobs
@@ -23,7 +23,7 @@
           };
         in
           [
-            ollamagpu
+            #ollamagpu
             vim emacs ripgrep coreutils fd sqlite 
             wget git unzip # Basic tools
             vulkan-tools pulsemixer # vulkan,, audio mixer
@@ -83,7 +83,7 @@
             mpd ncmpcpp
             # jack2 pavucontrol libjack2 jack2Full jack_capture
             # Pixelart
-            aseprite-unfree
+            #aseprite-unfree
             # Uni
             #teams
             # Image manipulation/view

@@ -198,7 +198,11 @@
   # Waydroid
   virtualisation.waydroid.enable = false;
   # docker
-  virtualisation.docker.enable = false;
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless.enable = true;
+  virtualisation.docker.rootless.setSocketVariable = true;
+  virtualisation.docker.enableNvidia = true;
+  virtualisation.docker.storageDriver = "zfs";
   #Postgresql
   services.postgresql = {
     enable = true;
